@@ -17,6 +17,16 @@ const Transmission = NativeModules.Transmission
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Transmission.multiply(a, b);
+export function init(configDir: string, appName: string): void {
+  return Transmission.init(configDir, appName);
+}
+
+export function request(json: any, callback: any): void {
+  return Transmission.request(JSON.stringify(json), (err: any, res: any) =>
+    callback(err, JSON.parse(res))
+  );
+}
+
+export function close(): void {
+  return Transmission.close();
 }

@@ -1,6 +1,8 @@
 # react-native-transmission
 
-react-native-transmission
+React native module for libtransmission.
+
+**Only for Android for now.**
 
 ## Installation
 
@@ -11,11 +13,40 @@ npm install react-native-transmission
 ## Usage
 
 ```js
-import { multiply } from 'react-native-transmission';
+import * as tr from 'react-native-transmission'
 
-// ...
+tr.init(
+  '/data/data/com.transmissionexample/files/configDir',
+  'transmission'
+);
 
-const result = await multiply(3, 7);
+// Beware to correctly set the download dir when your app load, 
+// as default location is not correct by default on android yet.
+tr.request(
+  {
+    method: 'session-set',
+    arguments: {
+      'download-dir': '/data/data/com.transmissionexample/files/downloads',
+    }
+  }, (err, res) => {}
+)
+
+tr.request(
+  {
+    method: 'session-get',
+    arguments: {
+      fields: ['version'],
+    },
+  },
+  (err, res) => {
+    if (err) {
+      console.error(err)
+    }
+    console.log(res)
+  }
+)
+
+tr.close()
 ```
 
 ## Contributing
@@ -24,7 +55,7 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 ## License
 
-MIT
+GPL-v3
 
 ---
 

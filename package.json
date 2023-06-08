@@ -1,7 +1,7 @@
 {
   "name": "react-native-transmission",
   "version": "0.1.0",
-  "description": "test",
+  "description": "react-native module for libtransmission",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -13,7 +13,9 @@
     "android",
     "ios",
     "cpp",
+    "scripts",
     "*.podspec",
+    "!cpp/transmission",
     "!lib/typescript/example",
     "!ios/build",
     "!android/build",
@@ -24,9 +26,11 @@
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__",
-    "!**/.*"
+    "!**/.*",
+    "!**/.log"
   ],
   "scripts": {
+    "preinstall": "node ./scripts/clone-transmission.js",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -43,7 +47,7 @@
   ],
   "repository": "https://github.com/G-Ray/react-native-transmission",
   "author": "Geoffrey Bonneville <geoffrey.bonneville@gmail.com> (https://github.com/G-Ray)",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/G-Ray/react-native-transmission/issues"
   },
@@ -134,7 +138,8 @@
   },
   "eslintIgnore": [
     "node_modules/",
-    "lib/"
+    "lib/",
+    "cpp/"
   ],
   "prettier": {
     "quoteProps": "consistent",
