@@ -1,18 +1,19 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text, Button } from 'react-native';
-import * as tr from 'react-native-transmission';
+import Transmission from 'react-native-transmission';
 
 export default function App() {
   const [response, setResponse] = React.useState('');
+  let tr = React.useRef<null | Transmission>(null);
 
   const handleInit = () => {
-    tr.init(
+    tr.current = new Transmission(
       '/data/data/com.transmissionexample/files/transmission',
       'transmission'
     );
 
-    tr.request(
+    tr.current?.request(
       {
         method: 'session-set',
         arguments: {
@@ -27,7 +28,7 @@ export default function App() {
       }
     );
 
-    tr.request(
+    tr.current?.request(
       {
         method: 'session-get',
         arguments: {
@@ -43,25 +44,15 @@ export default function App() {
     );
   };
 
-  const handleRequest = () => {
-    tr.request(
-      {
-        method: 'port-test',
-        // arguments: {
-        //   fields: ['version'],
-        // },
-      },
-      (err: string, res: string) => {
-        if (err) {
-          setResponse('Error: ' + err);
-        }
-        setResponse(res);
-      }
-    );
+  const handleRequest = async () => {
+    const res = await tr.current?.request({
+      method: 'port-test',
+    });
+    setResponse(res);
   };
 
   const handleAddTorrent = () => {
-    tr.request(
+    tr.current?.request(
       {
         method: 'torrent-add',
         arguments: {
@@ -78,7 +69,7 @@ export default function App() {
   };
 
   const handleListTorrents = () => {
-    tr.request(
+    tr.current?.request(
       {
         method: 'torrent-get',
         arguments: {
@@ -102,7 +93,7 @@ export default function App() {
   };
 
   const handleClose = () => {
-    tr.close();
+    tr.current?.close();
   };
 
   return (

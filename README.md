@@ -46,6 +46,18 @@ tr.request(
   }
 )
 
+// Or use tr.request as a promise
+const res = await tr.request(
+  {
+    method: 'session-get',
+    arguments: {
+      fields: ['version'],
+    },
+  }
+)
+
+console.log(res)
+
 tr.close()
 ```
 
