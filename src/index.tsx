@@ -17,16 +17,30 @@ const Transmission = NativeModules.Transmission
       }
     );
 
-export function init(configDir: string, appName: string): void {
-  return Transmission.init(configDir, appName);
-}
+export default class TransmissionClass {
+  constructor(configDir = 'transmission', appName = 'transmission') {
+    Transmission.init(configDir, appName);
+  }
 
-export function request(json: any, callback: any): void {
-  return Transmission.request(JSON.stringify(json), (err: any, res: any) =>
-    callback(err, JSON.parse(res))
-  );
-}
+  close() {
+    return Transmission.close();
+  }
 
-export function close(): void {
-  return Transmission.close();
+  request(req: any, cb?: any) {
+    // Callback api
+    if (cb && typeof cb === 'function') {
+      return Transmission.request(JSON.stringify(req), (err: any, res: any) => {
+        if (err) return cb(err);
+        cb(null, JSON.parse(res));
+      });
+    }
+
+    // Promise api
+    return new Promise((resolve, reject) => {
+      Transmission.request(JSON.stringify(req), (err: any, res: any) => {
+        if (err) return reject(err);
+        resolve(JSON.parse(res));
+      });
+    });
+  }
 }
