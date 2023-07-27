@@ -96,12 +96,17 @@ export default function App() {
     tr.current?.close();
   };
 
+  const handleSaveSettings = () => {
+    tr.current?.saveSettings();
+  };
+
   return (
     <View style={styles.container}>
       <Button title="Init()" onPress={handleInit} />
       <Button title="request()" onPress={handleRequest} />
       <Button title="addTorrent()" onPress={handleAddTorrent} />
       <Button title="listTorrents" onPress={handleListTorrents} />
+      <Button title="saveSettings()" onPress={handleSaveSettings} />
       <Button title="Close()" onPress={handleClose} />
       <Text>{JSON.stringify(response)}</Text>
     </View>

@@ -30,3 +30,9 @@ JNIEXPORT void JNICALL
 Java_com_transmission_TransmissionModule_nativeClose(JNIEnv *env, jclass type) {
     transmission::close();
 }
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_transmission_TransmissionModule_nativeSaveSettings(JNIEnv *env, jclass type) {
+    transmission::saveSettings();
+}

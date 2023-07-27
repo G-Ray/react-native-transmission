@@ -43,4 +43,8 @@ export default class TransmissionClass {
       });
     });
   }
+
+  saveSettings() {
+    return Transmission.saveSettings();
+  }
 }
