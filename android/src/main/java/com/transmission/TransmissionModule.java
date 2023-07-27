@@ -40,6 +40,7 @@ public class TransmissionModule extends ReactContextBaseJavaModule {
   private static native void nativeInit(String configDir, String appName);
   private static native String nativeRequest(String json);
   private static native void nativeClose();
+  private static native void nativeSaveSettings();
 
   @ReactMethod
   public void init(String configDir, String appName) {
@@ -65,5 +66,10 @@ public class TransmissionModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void close() {
     nativeClose();
+  }
+
+  @ReactMethod
+  public void saveSettings() {
+    nativeSaveSettings();
   }
 }

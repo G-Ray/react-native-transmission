@@ -81,11 +81,15 @@ namespace transmission {
 	}
 
 	void close() {
+		saveSettings();
+		tr_sessionClose(session);
+	}
+
+	void saveSettings() {
 		tr_variant settings;
 
 		tr_variantInitDict(&settings, 0);
 		tr_sessionSaveSettings(session, configDir.c_str(), &settings);
-		tr_sessionClose(session);
 		tr_variantClear(&settings);
 	}
 }

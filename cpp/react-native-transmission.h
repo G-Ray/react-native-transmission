@@ -9,6 +9,7 @@ namespace transmission {
   void init(string config_dir, string app_name);
   string request(string json_string);
   void close();
+  void saveSettings();
 }
 
 #endif /* TRANSMISSION_H */
