@@ -13,12 +13,12 @@ npm install react-native-transmission
 ## Usage
 
 ```js
-import * as tr from 'react-native-transmission'
+import Transmission from 'react-native-transmission'
 
-tr.init(
+const tr = new Transmission(
   '/data/data/com.transmissionexample/files/configDir',
   'transmission'
-);
+)
 
 // Beware to correctly set the download dir when your app load, 
 // as default location is not correct by default on android yet.
