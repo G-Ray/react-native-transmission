@@ -41,7 +41,6 @@ android {
     externalNativeBuild {
       cmake {
         cppFlags "-O2 -frtti -fexceptions -Wall -fstack-protector-all"
-        abiFilters "x86_64", "arm64-v8a"
         arguments "-DCMAKE_BUILD_TYPE=Release", "-DANDROID_STL=c++_shared", "-DANDROID_PLATFORM=26"
       }
     }
