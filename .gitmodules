@@ -1,0 +1,4 @@
+[submodule "cpp/transmission"]
+	path = cpp/transmission
+	url = https://github.com/G-Ray/transmission
+	branch = 4.0.3-react-native-transmission
