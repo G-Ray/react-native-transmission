@@ -1,11 +1,5 @@
 #include "react-native-transmission.h"
 
-#include "../cpp/transmission/libtransmission/transmission.h"
-#include "../cpp/transmission/libtransmission/rpcimpl.h"
-#include "../cpp/transmission/libtransmission/utils.h"
-#include "../cpp/transmission/libtransmission/variant.h"
-#include <future>
-
 using std::string;
 
 #define MEM_K 1024

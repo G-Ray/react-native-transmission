@@ -2,6 +2,12 @@
 #define TRANSMISSION_H
 
 #include <string>
+#include <future>
+
+#include "../cpp/transmission/libtransmission/transmission.h"
+#include "../cpp/transmission/libtransmission/rpcimpl.h"
+#include "../cpp/transmission/libtransmission/utils.h"
+#include "../cpp/transmission/libtransmission/variant.h"
 
 using std::string;
 
