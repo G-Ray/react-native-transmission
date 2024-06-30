@@ -9,8 +9,6 @@ Java_com_transmission_TransmissionModule_nativeInit(JNIEnv *env, jclass type, js
     const char *configDirConv = (env)->GetStringUTFChars(configDir, &isCopy);
     const char *appNameConv = (env)->GetStringUTFChars(appName, &isCopy);
 
-    // setenv("CURL_CA_BUNDLE", "/data/data/com.transmissionexample/cacert-2023-05-30.pem", true);
-
     transmission::init(configDirConv, appNameConv);
 }
 
@@ -21,7 +19,6 @@ Java_com_transmission_TransmissionModule_nativeRequest(JNIEnv *env, jclass type,
     const char *jsonConv = (env)->GetStringUTFChars(json, &isCopy);
 
     std::string response = transmission::request(jsonConv);
-    // std::string response = std::string("my string");
     return (env)->NewStringUTF(response.c_str());
 }
 
