@@ -27,7 +27,8 @@
     "!**/__fixtures__",
     "!**/__mocks__",
     "!**/.*",
-    "!**/.log"
+    "!**/.log",
+    "!example"
   ],
   "scripts": {
     "preinstall": "node ./scripts/clone-transmission.js",
