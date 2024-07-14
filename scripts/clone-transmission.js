@@ -8,7 +8,7 @@ if (existsSync('./cpp/transmission')) {
 }
 
 execSync(
-  'git clone -b 4.0.x-pikatorrent --single-branch https://github.com/G-Ray/transmission.git cpp/transmission'
+  'git clone -b 4.0.6-pikatorrent --single-branch https://github.com/G-Ray/transmission.git cpp/transmission'
 );
 
 execSync('git submodule update --init --recursive', {
