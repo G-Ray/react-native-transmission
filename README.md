@@ -4,6 +4,16 @@ React native module for libtransmission.
 
 **Only for Android for now.**
 
+## Development
+```sh
+# Install vcpkg, and install required packages
+vcpkg install \
+curl:x86-android openssl:x86-android \
+curl:x64-android openssl:x64-android \
+curl:arm-android openssl:arm-android \
+curl:arm64-android openssl:arm64-android
+```
+
 ## Installation
 
 ```sh

@@ -10,6 +10,7 @@ foreach(var ${vars})
     endif()
 endforeach()
 
+include(cmake/VcpkgAndroid.cmake)
 include(ExternalProject)
 
 Project(cpp)
@@ -24,8 +25,6 @@ ExternalProject_Add(transmission
   INSTALL_COMMAND ""
   CMAKE_ARGS 
     ${CL_ARGS}
-    "-DCMAKE_BUILD_TYPE=Debug" 
-    "-DWITH_CRYPTO=openssl" 
     "-DENABLE_DAEMON=OFF" 
     "-DINSTALL_DOC=OFF"
     "-DINSTALL_LIB=OFF"
@@ -43,9 +42,8 @@ ExternalProject_Add(transmission
     ${TRANSMISSION_LIB_DIR}/third-party/wildmat/libwildmat.a
 )
 
-
-find_package(curl REQUIRED CONFIG)
-find_package(openssl REQUIRED CONFIG)
+find_package(CURL REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 add_library(libtransmission STATIC IMPORTED)
 add_library(libdht STATIC IMPORTED)
@@ -76,7 +74,7 @@ SHARED
 cpp-adapter.cpp
 )
 
-target_link_libraries(cpp openssl::crypto openssl::ssl libtransmission libdht libjsonsl libb64 libdeflate libevent libnatpmp libpsl libutp libminiupnpc libwildmat curl::curl log)
+target_link_libraries(cpp OpenSSL::Crypto OpenSSL::SSL libtransmission libdht libjsonsl libb64 libdeflate libevent libnatpmp libpsl libutp libminiupnpc libwildmat CURL::libcurl log)
 
 # Specifies a path to native header files.
 include_directories(
