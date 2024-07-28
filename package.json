@@ -1,6 +1,6 @@
 {
   "name": "react-native-transmission",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "react-native module for libtransmission",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
